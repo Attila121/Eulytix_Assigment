@@ -225,12 +225,13 @@ def main():
         print(classification_report(results['y_test'], y_pred))
         
         plt.figure(figsize=(12, 8))
+        top_10_features = results['feature_importance'].head(10)
         sns.barplot(
             x='importance',
             y='feature',
-            data=results['feature_importance'].head(15)
+            data=top_10_features
         )
-        plt.title('Top 15 Most Important Features in Vote Prediction')
+        plt.title('Top 10 Most Important Features in Vote Prediction')
         plt.tight_layout()
         plt.savefig('feature_importance.png')
         
