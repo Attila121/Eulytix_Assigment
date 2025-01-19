@@ -225,7 +225,7 @@ def main():
         print(classification_report(results['y_test'], y_pred))
         
         plt.figure(figsize=(12, 8))
-        top_10_features = results['feature_importance'].head(10)
+        top_10_features = results['feature_importance'].nlargest(10, 'importance')
         sns.barplot(
             x='importance',
             y='feature',
